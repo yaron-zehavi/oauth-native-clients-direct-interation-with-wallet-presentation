@@ -65,7 +65,7 @@ OAuth 2.0 **direct interaction**, whereby clients call authorization server's *N
 Endpoint* as an HTTP REST API, whose response instructs client what information
 to collect from end-user to satisfy authorization server's policies and requirements.
 
-OpenID for Verifiable Presentations {{OpenID}} does not issue traditional OAuth tokens as its primary
+OpenID for Verifiable Presentations {{OpenID4VP}} does not issue traditional OAuth tokens as its primary
 output. Its main result is rather a VP Token that carries one or more Verifiable Presentations.
 
 This document is an **extension profile** of FiPA, describing a flow in which
