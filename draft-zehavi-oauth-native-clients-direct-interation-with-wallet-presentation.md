@@ -136,7 +136,7 @@ by adding the following response attributes, used when error code "insufficient_
 :    OPTIONAL.  openid4vp {{OpenID4VP}} request url.
 
 "status":
-:    OPTIONAL.  Conveys status of ongoing operation.
+:    OPTIONAL.  Conveys status of ongoing operation. This document uses the value "pending".
 
 # IANA Considerations
 
