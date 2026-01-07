@@ -178,7 +178,8 @@ Table of Contents
 
    "credentials_request":  OPTIONAL.  openid4vp [OpenID4VP] request url.
 
-   "status":  OPTIONAL.  Conveys status of ongoing operation.
+   "status":  OPTIONAL.  Conveys status of ongoing operation.  This
+      document uses the value "pending".
 
 5.  IANA Considerations
 
