@@ -170,7 +170,13 @@ Table of Contents
 4.2.  Native Authorization Response
 
    This document extends FiPA's [I-D.ietf-oauth-first-party-apps] error
-   response, by adding the following response attributes:
+   response, by adding the following response attributes, used when
+   error code "insufficient_authorization" is returned:
+
+   "type":  OPTIONAL.  Denotes type of authorization required.  This
+      document uses the value "digital_credentials".
+
+   "credentials_request":  OPTIONAL.  openid4vp [OpenID4VP] request url.
 
    "status":  OPTIONAL.  Conveys status of ongoing operation.
 
@@ -376,8 +382,8 @@ Cache-Control: no-store
 {
   "error": "insufficient_authorization",
   "auth_session": "ce6772f5e07bc8361572f",
-  "type": "digital_credentials_required",
-  "request": "openid4vp://?request_uri=..." // omitted if the authorization server cannot yet return the presentation request
+  "type": "digital_credentials",
+  "credentials_request": "openid4vp://?request_uri=..." // omitted if the authorization server cannot yet return the presentation request
 }
 
 4.   Client invokes the DC API.
