@@ -99,7 +99,7 @@ Table of Contents
      6.2.  Informative References
    Appendix A.  Example User Experiences
      A.1.  Usage with Digital Credentials
-       A.1.1.  RAR & Transaction Data
+     A.2.  RAR & Transaction Data
    Appendix B.  Document History
    Acknowledgments
    Author's Address
@@ -484,7 +484,7 @@ Cache-Control: no-store
 
 26.  The authorization server responds to the token request.
 
-A.1.1.  RAR & Transaction Data
+A.2.  RAR & Transaction Data
 
    [OpenID4VP] supports transaction data, which is additional data to be
    signed and presented alongside the requested credentials.  This can
