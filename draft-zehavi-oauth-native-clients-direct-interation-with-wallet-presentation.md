@@ -107,6 +107,31 @@ We cover 3 primary use cases:
 
 The native authorization endpoint defined by FiPA {{I-D.ietf-oauth-first-party-apps}} is used by this document.
 
+This document adds the following request parameters:
+
+"dc_api":
+:    OPTIONAL.  Boolean indication (true / false) whether client has access to DC API (web) or equivalent native platform SDKs.
+
+"openid4vp_flow_type":
+:    OPTIONAL.  Indication if wallet is on the *same_device* or *cross_device*. This parameter MUST NOT be sent when dc_api=true.
+
+"openid4vp_redirect_uri":
+:    OPTIONAL.  Redirect URI returning from wallet to client in {{OpenID4VP}} same device flows. This parameter MUST NOT be sent when dc_api=true, or when openid4vp_flow_type=cross_device.
+
+"response_code":
+:    OPTIONAL.  {{OpenID4VP}} Verifier's response_code is provided as part of the redirect_uri it returns to wallet in same device flow.
+
+"vp_token":
+:    OPTIONAL.  Returned from DC API and provided to authorization server acting as client of verifier.
+
+## Native Authorization Response {#native-response}
+
+This document extends FiPA's {{I-D.ietf-oauth-first-party-apps}} error response,
+by adding the following response attributes:
+
+"status":
+:    OPTIONAL.  Conveys status of ongoing operation.
+
 # IANA Considerations
 
 ## OAuth Parameters Registration
@@ -257,9 +282,9 @@ The verifier is displayed here as a separate instance, but can also be part of t
 8. The verifier verifies the vp_token and returns the result. The authorization server evaluates the verification result and returns either a code or an error. Here we assume the happy path. Continue with step 24.
 9. If DC API is NOT supported and in case of same device flow, the client invokes the Wallet through Deep Link.
 10. Wallet presents credentials to verifier.
-11. Verifier responds with a URL instructing wallet to redirect as per {{OpenID4VP}}.
-12. Wallet redirects back to the client using the received URL as a Deep Link.
-13. Client extracts the handle from the received URL and provides it to the authorization server.
+11. Verifier responds with a redirect_uri instructing wallet to redirect as per {{OpenID4VP}} section 13.3.
+12. Wallet redirects back to the client using the received redirect_uri.
+13. Client extracts the response_code and provides it to the authorization server.
 
         POST /native-authorization HTTP/1.1
         Host: server.example.com
@@ -267,7 +292,7 @@ The verifier is displayed here as a separate instance, but can also be part of t
 
         {
           "auth_session": "ce6772f5e07bc8361572f",
-          "presentation_id" : "87248924n2f"
+          "response_code" : "87248924n2f",
         }
 
 14. The authorization server uses the handle at verifier to look retrieve the presentation result.
