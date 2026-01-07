@@ -329,7 +329,7 @@ The verifier is displayed here as a separate instance, but can also be part of t
 25. The client redeems the code for an access token.
 26. The authorization server responds to the token request.
 
-### RAR & Transaction Data
+## RAR & Transaction Data
 
 {{OpenID4VP}} supports transaction data, which is additional data to be signed and presented alongside the requested credentials. This can be mapped to RAR {{RFC9396}}. The following diagram depicts a wallet flow incorporating RAR. Details of how the wallet is invoked or how the presentation result reaches the authorization server are omitted for simplicity. Refer to {{digital-credentials}} for details.
 
